@@ -403,6 +403,24 @@ void updateScoreByID()
     }
 }
 
+void help()
+{
+    printf("\n");
+    printf("  *********************************************** Command List ************************************************\n");
+    printf("  * help         - Show this help screen                                                                      *\n");
+    printf("  * cls          - Clear terminal screen                                                                      *\n");
+    printf("  * show-normal  - Show normal display screen                                                                 *\n");
+    printf("  * show-avg     - Show display screen with average-score calculations                                        *\n");
+    printf("  * find-name    - Find student by name in database                                                           *\n");
+    printf("  * find-id      - Find student by their associated ID                                                        *\n");
+    printf("  * add          - Add student to database                                                                    *\n");
+    printf("  * id-avg       - Return average-score of a student with a particular ID                                     *\n");
+    printf("  * name-avg     - Return average-score of a student with a particular name                                   *\n");
+    printf("  * update-score - Allows for the updating of a student's score for a particular subject if their ID is known *\n");
+    printf("  *                                                                                                           *\n");
+    printf("  *                          Please make use of '-' character in the place of spaces                          *\n");
+    printf("  *************************************************************************************************************\n");
+}
 
 int main()
 {
@@ -418,10 +436,11 @@ int main()
 
     tot = i;
 
+    help();
 
     while(1)
     {
-        printf("\nCommand: ");
+        printf("\nhelp> ");
         scanf("%s", userCommand);
 
         if(strcmp(userCommand, "exit") == 0)
@@ -435,7 +454,7 @@ int main()
             displayRecords();
         }
 
-        else if(strcmp(userCommand, "show-average") == 0)
+        else if(strcmp(userCommand, "show-avg") == 0)
         {
             system("cls");
             calculateAverageScoreDisplay();
@@ -471,7 +490,7 @@ int main()
             calculateAverageScoreSingleName();
         }
 
-        else if(strcmp(userCommand, "score-id") == 0)
+        else if(strcmp(userCommand, "update-score") == 0)
         {
             system("cls");
             updateScoreByID();
@@ -482,13 +501,18 @@ int main()
             system("cls");
         }
 
+        else if(strcmp(userCommand, "help") == 0)
+        {
+            help();
+        }
+
         else
         {
             printf("\nInvalid Command\n");
         }
     }
 
-    printf("/n")
+    printf("\n");
     fclose(fptr);
     fclose(fptw);
     fclose(fptw2);
