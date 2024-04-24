@@ -1,4 +1,7 @@
 /*
+    Ezra Minty - 1048091
+
+
 Documentation
 
     show-normal
@@ -65,13 +68,6 @@ Documentation
 Limitations
                 - After a student is added or a student's scores were updated,
                 the program needs to be reloaded in order for these changes to be seen.
-
-                - The "_" or "-" characters need to be used in the place of space characters
-                when a student's name is being added to the database. If this is not done, the
-                program may not be able to find that student in a situation where a command such
-                as "find-name" is used, as the program is unable to effectively handle the comparison
-                between the name which will be entered by the user and the name in the database, due to
-                the presence of the space character.
 
 */
 
@@ -169,7 +165,9 @@ void findStudentByName()
     int found = 0;
     char studentName[50];
     printf("Student Name: ");
-    scanf("%s", studentName);
+    getchar();
+    fgets(studentName, sizeof(studentName), stdin );
+    studentName[strcspn(studentName, "\n")] = '\0';
 
     /* The for loop below is used by the program to find and print the information associated with
     a particular student name, if this student exists within the database. */
@@ -241,7 +239,9 @@ void addStudent()
     int found = 0;
     char studentName[50];
     printf("\nStudent Name: ");
-    scanf("%s", studentName);
+    getchar();
+    fgets(studentName, sizeof(studentName), stdin );
+    studentName[strcspn(studentName, "\n")] = '\0';
 
 
     /* Code below will loop through loop through the lines of the file in search of a student which
@@ -379,7 +379,9 @@ the one entered by the user */
 void calculateAverageScoreSingleName()
 {
     printf("\nStudent Name: ");
-    scanf("%s", userCommand);
+    getchar();
+    fgets(userCommand, sizeof(userCommand), stdin);
+    userCommand[strcspn(userCommand, "\n")] = '\0';
 
     for(i = 0; i < tot; ++i)
     {
@@ -570,8 +572,6 @@ void help()
     printf("  * id-avg       - Return average-score of a student with a particular ID                                     *\n");
     printf("  * name-avg     - Return average-score of a student with a particular name                                   *\n");
     printf("  * update-score - Allows for the updating of a student's score for a particular subject if their ID is known *\n");
-    printf("  *                                                                                                           *\n");
-    printf("  *                          Please make use of '-' character in the place of spaces                          *\n");
     printf("  *************************************************************************************************************\n");
 }
 
