@@ -1,6 +1,6 @@
 # Student-Management-System (University)
 
-A CLI Student Management System that makes use of a separate `.txt` file to save student info even after a program reload.
+A CLI Student Management System, written in C, that makes use of a separate `.txt` file to save student info even after a program reload.
 
 ## Usage
 
